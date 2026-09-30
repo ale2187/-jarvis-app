@@ -1,0 +1,138 @@
+import os
+from flask import Flask, request, jsonify, render_template_string
+from openai import OpenAI
+
+app = Flask(__name__)
+
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+JARVIS_SYSTEM_PROMPT = """
+Sei JARVIS, l'assistente IA personale e professionale di Alessandro.
+Il tuo tono di voce è formale, altamente efficiente, brillante e sintetico.
+Rispondi sempre in modo chiaro e diretto.
+"""
+
+HTML_HUD = """
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - Core HUD</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: #050811; color: #00f0ff; font-family: 'Courier New', monospace; display: flex; flex-direction: column; justify-content: space-between; height: 100vh; padding: 20px; overflow: hidden; }
+        header { display: flex; justify-content: space-between; border-bottom: 1px solid #00f0ff55; padding-bottom: 10px; }
+        .sys-status { font-size: 12px; color: #00f0ffaa; }
+        .sys-title { font-size: 18px; font-weight: bold; letter-spacing: 2px; }
+        .arc-container { display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; }
+        .arc-reactor { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #00f0ff; box-shadow: 0 0 20px #00f0ff, inset 0 0 20px #00f0ff; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite ease-in-out; cursor: pointer; }
+        .arc-inner { width: 80px; height: 80px; border-radius: 50%; border: 2px dashed #00f0ff; animation: spin 10s linear infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 20px #00f0ff; } 50% { transform: scale(1.05); box-shadow: 0 0 40px #00f0ff; } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .output-box { background: #00f0ff11; border: 1px solid #00f0ff33; padding: 15px; border-radius: 8px; min-height: 100px; max-height: 150px; overflow-y: auto; font-size: 14px; margin-bottom: 15px; }
+        .controls { display: flex; gap: 10px; }
+        input[type="text"] { flex-grow: 1; background: #081020; border: 1px solid #00f0ff66; padding: 12px; color: #fff; border-radius: 5px; font-family: inherit; }
+        button { background: #00f0ff22; border: 1px solid #00f0ff; color: #00f0ff; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #00f0ff; color: #000; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="sys-title">JARVIS // HUD</div>
+        <div class="sys-status" id="status">SYSTEM READY</div>
+    </header>
+    <div class="arc-container">
+        <div class="arc-reactor" onclick="startVoice()">
+            <div class="arc-inner"></div>
+        </div>
+    </div>
+    <div class="output-box" id="output">In attesa di comandi...</div>
+    <div class="controls">
+        <input type="text" id="userInput" placeholder="Invia un comando a JARVIS..." onkeydown="if(event.key==='Enter') sendMsg()">
+        <button onclick="sendMsg()">INVIA</button>
+    </div>
+    <script>
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'it-IT';
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        async function sendMsg() {
+            const input = document.getElementById('userInput');
+            const output = document.getElementById('output');
+            const status = document.getElementById('status');
+            const msg = input.value.trim();
+            if(!msg) return;
+            output.innerText = "Elaborazione in corso...";
+            status.innerText = "BUSY";
+            input.value = "";
+            try {
+                const res = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({message: msg})
+                });
+                const data = await res.json();
+                const reply = data.response || "Errore di risposta.";
+                output.innerText = reply;
+                speak(reply);
+            } catch(e) {
+                output.innerText = "Errore di connessione al server.";
+            } finally {
+                status.innerText = "SYSTEM READY";
+            }
+        }
+
+        function startVoice() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert("Riconoscimento vocale non supportato su questo browser.");
+                return;
+            }
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'it-IT';
+            recognition.onstart = () => { document.getElementById('status').innerText = "LISTENING..."; };
+            recognition.onresult = (e) => {
+                document.getElementById('userInput').value = e.results[0][0].transcript;
+                sendMsg();
+            };
+            recognition.start();
+        }
+    </script>
+</body>
+</html>
+"""
+
+@app.route("/")
+def index():
+    return render_template_string(HTML_HUD)
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    try:
+        data = request.json or {}
+        user_message = data.get("message", "")
+        if not user_message:
+            return jsonify({"response": "Nessun messaggio ricevuto."}), 400
+
+        completion = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": JARVIS_SYSTEM_PROMPT},
+                {"role": "user", "content": user_message}
+            ]
+        )
+        return jsonify({"response": completion.choices[0].message.content})
+    except Exception as e:
+        return jsonify({"response": f"Errore: {str(e)}"}), 500
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
