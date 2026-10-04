@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>J.A.R.V.I.S. - Personal AI Assistant</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            background: #0a0e27;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        #app {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 20px;
+            gap: 20px;
+        }
+        .status {
+            text-align: center;
+            font-size: 12px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .reactor-container {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            align-items: center;
+        }
+        .reactor {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .reactor-outer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), inset 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+        .reactor-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #88ddff);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(136, 221, 255, 0.9);
+        }
+        .pulsing {
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 40px rgba(136, 221, 255, 0.9), inset 0 0 20px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(136, 221, 255, 1), inset 0 0 30px rgba(0, 212, 255, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(136, 221, 255, 0.9), inset 0 0 20px rgba(0, 212, 255, 0.3); }
+        }
+        .chat-history {
+            flex: 0 1 auto;
+            overflow-y: auto;
+            border: 1px solid #00d4ff40;
+            border-radius: 8px;
+            padding: 12px;
+            background: rgba(10, 14, 39, 0.7);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .message {
+            margin: 8px 0;
+            padding: 6px;
+        }
+        .message-user {
+            text-align: right;
+            color: #00d4ff;
+        }
+        .message-assistant {
+            color: #b0e0e6;
+        }
+        .input-area {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+        }
+        textarea {
+            flex: 1;
+            background: #1a1f3a;
+            border: 1px solid #00d4ff40;
+            border-radius: 6px;
+            color: #e0e0e0;
+            padding: 8px;
+            font-size: 13px;
+            resize: vertical;
+            max-height: 80px;
+            font-family: inherit;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+        button {
+            background: #00d4ff;
+            color: #0a0e27;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s;
+            touch-action: manipulation;
+        }
+        button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="status" v-text="status"></div>
+    <div class="reactor-container">
+        <div class="reactor" @click="toggleListening">
+            <div class="reactor-outer" ref="reactorOuter"></div>
+            <div class="reactor-core" ref="reactorCore"></div>
+        </div>
+    </div>
+    <div class="chat-history">
+        <div v-for="(msg, i) in history" :key="i" :class="['message', msg.role === 'user' ? 'message-user' : 'message-assistant']" v-text="msg.content"></div>
+    </div>
+    <div class="input-area">
+        <textarea v-model="userInput" placeholder="Scrivi un messaggio..." @keydown.enter.ctrl="sendMessage" rows="2"></textarea>
+        <button @click="sendMessage" :disabled="isProcessing || !userInput.trim()" style="white-space: nowrap;">Invia</button>
+    </div>
+</div>
+
+<script>
+const { createApp, ref, reactive } = Vue;
+
+createApp({
+    setup() {
+        const userInput = ref("");
+        const history = reactive([]);
+        const isListening = ref(false);
+        const isProcessing = ref(false);
+        const status = ref("ONLINE - VOCE: OPENAI CEDAR");
+        const reactorOuter = ref(null);
+        const reactorCore = ref(null);
+        let recognition;
+        let audio;
+
+        // Inizializza Web Speech API
+        const initSpeechRecognition = () => {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("Speech Recognition non supportato su questo browser.");
+                return;
+            }
+            recognition = new SpeechRecognition();
+            recognition.lang = "it-IT";
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = () => {
+                isListening.value = true;
+                reactorOuter.value.classList.add("pulsing");
+                status.value = "IN ASCOLTO...";
+            };
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[event.results.length - 1][0].transcript;
+                userInput.value = transcript;
+                sendMessage();
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech error:", event.error);
+                resetReactor();
+            };
+
+            recognition.onend = () => {
+                resetReactor();
+            };
+        };
+
+        const resetReactor = () => {
+            isListening.value = false;
+            isProcessing.value = false;
+            if (reactorOuter.value) {
+                reactorOuter.value.classList.remove("pulsing");
+            }
+            status.value = "ONLINE - VOCE: OPENAI CEDAR";
+        };
+
+        const toggleListening = async () => {
+            if (isProcessing.value) return;
+
+            // Unlock audio con un silent WAV per iOS Safari
+            if (!audio) {
+                audio = new Audio();
+                try {
+                    audio.src = "data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==";
+                    audio.play().catch(() => {});
+                } catch (e) { }
+            }
+
+            if (isListening.value) {
+                recognition?.stop();
+                resetReactor();
+            } else {
+                recognition?.start();
+            }
+        };
+
+        const sendMessage = async () => {
+            const msg = userInput.value.trim();
+            if (!msg || isProcessing.value) return;
+
+            isProcessing.value = true;
+            userInput.value = "";
+            history.push({ role: "user", content: msg });
+            status.value = "ELABORANDO...";
+
+            try {
+                const response = await fetch("/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        message: msg,
+                        history: history.slice(0, -1)
+                    })
+                });
+                const data = await response.json();
+                history.push({ role: "assistant", content: data.reply });
+
+                if (data.audio_url) {
+                    audio = new Audio(data.audio_url);
+                    audio.onended = () => {
+                        resetReactor();
+                    };
+                    audio.onerror = () => {
+                        resetReactor();
+                    };
+                    audio.play().catch(() => {
+                        resetReactor();
+                    });
+                } else {
+                    resetReactor();
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                history.push({ role: "assistant", content: "Errore nella comunicazione." });
+                resetReactor();
+            } finally {
+                isProcessing.value = false;
+            }
+        };
+
+        initSpeechRecognition();
+
+        return {
+            userInput,
+            history,
+            isListening,
+            isProcessing,
+            status,
+            reactorOuter,
+            reactorCore,
+            toggleListening,
+            sendMessage
+        };
+    }
+}).mount('#app');
+</script>
+</body>
+</html>
