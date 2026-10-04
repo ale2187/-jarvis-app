@@ -1,0 +1,19 @@
+name: Buongiorno JARVIS
+on:
+  schedule:
+    - cron: "30 5 * * *"
+    - cron: "30 6 * * *"
+  workflow_dispatch:
+jobs:
+  buongiorno:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Invia buongiorno
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AIRBNB_ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+        run: python3 briefing.py
