@@ -5,6 +5,11 @@
       "titolo": "Property Manager - Como, Lidi Ferraresi",
       "creato": "2026-10-30T09:57+01:00",
       "nota": ""
+    },
+    "gestione-clienti": {
+      "titolo": "Acquisizione clienti per gestione immobiliare e turistica",
+      "creato": "2026-10-30T11:50+01:00",
+      "nota": "Radar acquisizione clienti: proprietari e strutture da proporre per la gestione"
     }
   },
   "opportunita": [
@@ -209,6 +214,18 @@
         8
       ],
       "testo": "Ecco alcune offerte di immobili in vendita nei Lidi Ferraresi e Comacchio, con prezzo fino a 120.000 euro:\n\nAppartamento su due piani, buono stato, 110.000€, Lido di Spina, 70 m²\nhttps://www.idealista.it/immobile/30712345/\n\nMonolocale, buono stato, 95.000€, Lido degli Estensi, 32 m²\nhttps://www.idealista.it/immobile/30712346/\n\nAttico, buono stato, 85.000€, Lido degli Estensi, 50 m²\nhttps://www.idealista.it/immobile/30712347/\n\nBilocale, buono stato, 82.000€, Lido di Spina, 42 m²\nhttps://www.idealista.it/immobile/30712348/\n\nTrilocale, buono stato, 89.000€, Porto Garibaldi, 80 m²\nhttps://www.idealista.it/immobile/30712349/\n(link non verificabile dal radar: controllalo tu)"
+    },
+    {
+      "data": "2026-10-30T11:50+01:00",
+      "progetto": "gestione-clienti",
+      "modalita": "gestione_clienti",
+      "zona": "lido+como",
+      "link_trovati": [],
+      "nuove_opportunita": [],
+      "scartate_per_categoria": {},
+      "duplicati": 0,
+      "link_falsi": 0,
+      "testo": ""
     }
   ],
   "prossimo_id": 9
