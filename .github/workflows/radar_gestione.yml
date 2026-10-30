@@ -1,0 +1,37 @@
+name: Radar gestione clienti
+on:
+  schedule:
+    - cron: "30 6 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jarvis-progetti
+  cancel-in-progress: false
+
+jobs:
+  gestione:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cerca clienti per la gestione
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python3 radar_gestione.py
+      - name: Salva progetti su GitHub
+        if: always()
+        run: |
+          git config user.name "JARVIS"
+          git config user.email "jarvis@users.noreply.github.com"
+          git add progetti.json || true
+          if git diff --cached --quiet; then
+            echo "progetti.json invariato"
+          else
+            git commit -m "JARVIS: clienti gestione"
+            git pull --rebase origin main || true
+            git push origin HEAD:main
+          fi
