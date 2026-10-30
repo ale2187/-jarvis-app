@@ -7,7 +7,152 @@
       "nota": ""
     }
   },
-  "opportunita": [],
+  "opportunita": [
+    {
+      "id": 1,
+      "progetto": "property-manager",
+      "zona": "Como",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/23456789/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 2,
+      "progetto": "property-manager",
+      "zona": "Como",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/34567890/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 3,
+      "progetto": "property-manager",
+      "zona": "Como",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/45678901/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 4,
+      "progetto": "property-manager",
+      "zona": "Lidi Ferraresi",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/30712345/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 5,
+      "progetto": "property-manager",
+      "zona": "Lidi Ferraresi",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/30712346/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 6,
+      "progetto": "property-manager",
+      "zona": "Lidi Ferraresi",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/30712347/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 7,
+      "progetto": "property-manager",
+      "zona": "Lidi Ferraresi",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/30712348/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    },
+    {
+      "id": 8,
+      "progetto": "property-manager",
+      "zona": "Lidi Ferraresi",
+      "titolo": "",
+      "fonte": "https://www.idealista.it/immobile/30712349/",
+      "data_verifica": "2026-10-30",
+      "stato": "da_verificare",
+      "info_mancanti": [
+        "prezzo",
+        "metratura",
+        "stato dell'immobile",
+        "recapito del proprietario"
+      ],
+      "prossima_azione": "aprire l'annuncio e verificare che esista ancora",
+      "lettere": [],
+      "creato": "2026-10-30T10:02+01:00"
+    }
+  ],
   "ricerche": [
     {
       "data": "2026-10-30T09:57+01:00",
@@ -26,7 +171,45 @@
       "link_trovati": [],
       "nuove_opportunita": [],
       "testo": "Ecco alcune offerte di immobili in vendita nei Lidi Ferraresi e Comacchio, con prezzo fino a 120.000 euro:\n\nScartate 5 offerte con link falso o generico."
+    },
+    {
+      "data": "2026-10-30T10:02+01:00",
+      "progetto": "property-manager",
+      "modalita": "case",
+      "zona": "Como",
+      "link_trovati": [
+        "https://www.idealista.it/immobile/23456789/",
+        "https://www.idealista.it/immobile/34567890/",
+        "https://www.idealista.it/immobile/45678901/"
+      ],
+      "nuove_opportunita": [
+        1,
+        2,
+        3
+      ],
+      "testo": "3. Bilocale al piano terra senza spese comuni, 66 m², 95.000€, Locate Varesino.\n   https://www.idealista.it/immobile/23456789/\n(link non verificabile dal radar: controllalo tu)\n\n4. Trilocale con vista panoramica, 84 m², 90.000€, Plesio.\n   https://www.idealista.it/immobile/34567890/\n(link non verificabile dal radar: controllalo tu)\n\n5. Bilocale con cantina, 43 m², 59.000€, Locate Varesino.\n   https://www.idealista.it/immobile/45678901/\n\nPer ulteriori dettagli, visita i link forniti.\n(link non verificabile dal radar: controllalo tu)\n\nScartate 2 offerte con link falso o generico."
+    },
+    {
+      "data": "2026-10-30T10:02+01:00",
+      "progetto": "property-manager",
+      "modalita": "case",
+      "zona": "Lidi Ferraresi",
+      "link_trovati": [
+        "https://www.idealista.it/immobile/30712345/",
+        "https://www.idealista.it/immobile/30712346/",
+        "https://www.idealista.it/immobile/30712347/",
+        "https://www.idealista.it/immobile/30712348/",
+        "https://www.idealista.it/immobile/30712349/"
+      ],
+      "nuove_opportunita": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "testo": "Ecco alcune offerte di immobili in vendita nei Lidi Ferraresi e Comacchio, con prezzo fino a 120.000 euro:\n\nAppartamento su due piani, buono stato, 110.000€, Lido di Spina, 70 m²\nhttps://www.idealista.it/immobile/30712345/\n\nMonolocale, buono stato, 95.000€, Lido degli Estensi, 32 m²\nhttps://www.idealista.it/immobile/30712346/\n\nAttico, buono stato, 85.000€, Lido degli Estensi, 50 m²\nhttps://www.idealista.it/immobile/30712347/\n\nBilocale, buono stato, 82.000€, Lido di Spina, 42 m²\nhttps://www.idealista.it/immobile/30712348/\n\nTrilocale, buono stato, 89.000€, Porto Garibaldi, 80 m²\nhttps://www.idealista.it/immobile/30712349/\n(link non verificabile dal radar: controllalo tu)"
     }
   ],
-  "prossimo_id": 1
+  "prossimo_id": 9
 }
