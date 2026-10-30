@@ -1,0 +1,32 @@
+{
+  "versione": 1,
+  "progetti": {
+    "property-manager": {
+      "titolo": "Property Manager - Como, Lidi Ferraresi",
+      "creato": "2026-10-30T09:57+01:00",
+      "nota": ""
+    }
+  },
+  "opportunita": [],
+  "ricerche": [
+    {
+      "data": "2026-10-30T09:57+01:00",
+      "progetto": "property-manager",
+      "modalita": "case",
+      "zona": "Como",
+      "link_trovati": [],
+      "nuove_opportunita": [],
+      "testo": "Ecco alcune offerte di immobili in vendita nella provincia di Como, aggiornate al 30 ottobre 2026:\n\nScartate 3 offerte con link falso o generico."
+    },
+    {
+      "data": "2026-10-30T09:57+01:00",
+      "progetto": "property-manager",
+      "modalita": "case",
+      "zona": "Lidi Ferraresi",
+      "link_trovati": [],
+      "nuove_opportunita": [],
+      "testo": "Ecco alcune offerte di immobili in vendita nei Lidi Ferraresi e Comacchio, con prezzo fino a 120.000 euro:\n\nScartate 5 offerte con link falso o generico."
+    }
+  ],
+  "prossimo_id": 1
+}
