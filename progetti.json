@@ -226,6 +226,18 @@
       "duplicati": 0,
       "link_falsi": 0,
       "testo": ""
+    },
+    {
+      "data": "2026-10-30T12:33+01:00",
+      "progetto": "gestione-clienti",
+      "modalita": "gestione_clienti",
+      "zona": "lido+como",
+      "link_trovati": [],
+      "nuove_opportunita": [],
+      "scartate_per_categoria": {},
+      "duplicati": 0,
+      "link_falsi": 0,
+      "testo": ""
     }
   ],
   "prossimo_id": 9
