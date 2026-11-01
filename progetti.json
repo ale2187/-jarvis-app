@@ -1170,6 +1170,119 @@
         23,
         24
       ]
+    },
+    {
+      "data": "2026-11-01T09:45+01:00",
+      "progetto": "gestione-clienti",
+      "modalita": "gestione_clienti_v3",
+      "ricerche": [
+        {
+          "nome": "A | lago_di_como | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "appartamento in affitto privato lago di Como site:immobiliare.it OR site:idealista.it OR site:subito.it OR site:airbnb.it OR site:booking.com"
+          ]
+        },
+        {
+          "nome": "A | lago_di_como | web_agenzie",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "case in affitto da privati lago di Como Como Cernobbio Blevio Torno Faggeto Lario Nesso Lezzeno Bellagio Laglio Carate Urio Moltrasio Brienno Argegno Tremezzina Menaggio"
+          ]
+        },
+        {
+          "nome": "A | lidi_ferraresi | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "affitto appartamenti privati Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio site:immobiliare.it"
+          ]
+        },
+        {
+          "nome": "A | lidi_ferraresi | web_agenzie",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "affitto appartamenti privati Lido delle Nazioni, Comacchio annunci pubblici"
+          ]
+        },
+        {
+          "nome": "B | lago_di_como | portali",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "cerco property manager gestione casa vacanze Como Cernobbio Bellagio Lezzeno Tremezzina Menaggio Laglio sito:immobiliare.it OR sito:idealista.it OR sito:subito.it OR sito:airbnb.com OR sito:booking.com"
+          ]
+        },
+        {
+          "nome": "B | lago_di_como | web_agenzie",
+          "esito": "ok",
+          "risultati": 4,
+          "query": [
+            "cerco gestore casa vacanze Como cerco property manager gestione affitti brevi gestore Airbnb affidare gestione immobile gestione completa casa vacanze gestione B&B gestione appartamenti turistici"
+          ]
+        },
+        {
+          "nome": "B | lidi_ferraresi | portali",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "cerco gestore casa vacanze Lido delle Nazioni site:immobiliare.it OR site:idealista.it OR site:subito.it OR site:airbnb.it OR site:booking.com"
+          ]
+        },
+        {
+          "nome": "B | lidi_ferraresi | web_agenzie",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "cerco property manager Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio gestione affitti brevi Airbnb B&B"
+          ]
+        },
+        {
+          "nome": "C | lago_di_como | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "property manager cercasi lago di Como società gestione immobiliare turistica collaboratori affitti brevi"
+          ]
+        },
+        {
+          "nome": "C | lago_di_como | web_agenzie",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "property manager cerca collaboratori gestione immobili Lago di Como"
+          ]
+        },
+        {
+          "nome": "C | lidi_ferraresi | portali",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "agenzie gestione immobiliare turistico Lido delle Nazioni cerca collaboratori immobili gestione affitti brevi"
+          ]
+        },
+        {
+          "nome": "C | lidi_ferraresi | web_agenzie",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "agenzia immobiliare cerca collaboratori gestione immobiliare Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio"
+          ]
+        }
+      ],
+      "scartati": {
+        "link_falso_o_generico": 7,
+        "escluso_agenzia": 1,
+        "pagina_generica": 14
+      },
+      "duplicati": 1,
+      "verificati": 0,
+      "da_verificare_manualmente": 0,
+      "link_trovati": [],
+      "nuove_opportunita": []
     }
   ],
   "prossimo_id": 25
