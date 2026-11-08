@@ -1,0 +1,27 @@
+name: Radar gestione clienti
+on:
+  schedule:
+    - cron: "30 6 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jarvis-archivio
+  cancel-in-progress: false
+
+jobs:
+  gestione:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cerca clienti per la gestione
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.JARVIS_GH_TOKEN }}
+          GITHUB_REPO: ale2187/-jarvis-app
+          GITHUB_BRANCH: Dati
+        run: python3 radar_gestione.py
