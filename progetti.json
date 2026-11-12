@@ -1283,6 +1283,121 @@
       "da_verificare_manualmente": 0,
       "link_trovati": [],
       "nuove_opportunita": []
+    },
+    {
+      "data": "2026-11-12T16:29+01:00",
+      "progetto": "gestione-clienti",
+      "modalita": "gestione_clienti_v3",
+      "ricerche": [
+        {
+          "nome": "A | lago_di_como | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "case appartamenti in affitto lago di Como privati site:immobiliare.it OR site:idealista.it OR site:subito.it OR site:airbnb.it OR site:booking.com"
+          ]
+        },
+        {
+          "nome": "A | lago_di_como | web_agenzie",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "appartamenti in affitto lago di como privati agenzie prezzo ribassato foto poche descrizione breve"
+          ]
+        },
+        {
+          "nome": "A | lidi_ferraresi | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "annunci case appartamenti in affitto Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio privati agenzie prezzo ribassato poche foto descrizione breve"
+          ]
+        },
+        {
+          "nome": "A | lidi_ferraresi | web_agenzie",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "affitti case appartamenti privati agenzie Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio"
+          ]
+        },
+        {
+          "nome": "B | lago_di_como | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "cerco gestore casa vacanze Lago di Como site:immobiliare.it OR site:idealista.it OR site:subito.it OR site:airbnb.it OR site:booking.com"
+          ]
+        },
+        {
+          "nome": "B | lago_di_como | web_agenzie",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "cerco gestore casa vacanze lago di Como annunci proprietari cerca property manager gestione affitti brevi Airbnb"
+          ]
+        },
+        {
+          "nome": "B | lidi_ferraresi | portali",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "cerco property manager gestione casa vacanze Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio site:immobiliare.it OR site:idealista.it OR site:subito.it OR site:airbnb.com OR site:booking.com"
+          ]
+        },
+        {
+          "nome": "B | lidi_ferraresi | web_agenzie",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "cerco gestore casa vacanze Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio"
+          ]
+        },
+        {
+          "nome": "C | lago_di_como | portali",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "property manager cercasi Como Cernobbio Blevio Torno Faggeto Lario Nesso Lezzeno Bellagio Laglio Carate Urio Moltrasio Brienno Argegno Tremezzina Menaggio lago di Como Immobiliare.it"
+          ]
+        },
+        {
+          "nome": "C | lago_di_como | web_agenzie",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "property manager cercasi Como affitti brevi gestori strutture collaborazioni"
+          ]
+        },
+        {
+          "nome": "C | lidi_ferraresi | portali",
+          "esito": "ok",
+          "risultati": 5,
+          "query": [
+            "agenzie gestione immobiliare affitti brevi collaboratori Lido delle Nazioni, Lido di Pomposa, Lido degli Scacchi, Lido degli Estensi, Lido di Spina, Lido di Volano, Porto Garibaldi, Comacchio site:immobiliare.it"
+          ]
+        },
+        {
+          "nome": "C | lidi_ferraresi | web_agenzie",
+          "esito": "zero risultati",
+          "risultati": 0,
+          "query": [
+            "property manager cercasi Lido delle Nazioni Lido di Pomposa Lido degli Scacchi Lido degli Estensi Lido di Spina Lido di Volano Porto Garibaldi Comacchio gestione immobiliare turistica collaborazione"
+          ]
+        }
+      ],
+      "scartati": {
+        "id_sequenziali_sospetti": 5,
+        "link_falso_o_generico": 3,
+        "escluso_agenzia": 2,
+        "pagina_generica": 14,
+        "pagina_non_accessibile_non_verificabile": 2
+      },
+      "duplicati": 0,
+      "verificati": 0,
+      "da_verificare_manualmente": 0,
+      "link_trovati": [],
+      "nuove_opportunita": []
     }
   ],
   "prossimo_id": 25
