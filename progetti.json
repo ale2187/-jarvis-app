@@ -1550,6 +1550,91 @@
       "link_trovati": [],
       "nuove_opportunita": [],
       "testo": "Nessun annuncio verificabile questa settimana."
+    },
+    {
+      "data": "2026-11-26T18:12+01:00",
+      "progetto": "gestione-clienti",
+      "modalita": "gestione_clienti_v3",
+      "ricerche": [
+        {
+          "nome": "A | lago_di_como | portali",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "A | lago_di_como | web_agenzie",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "A | lidi_ferraresi | portali",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "A | lidi_ferraresi | web_agenzie",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "B | lago_di_como | portali",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "B | lago_di_como | web_agenzie",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "B | lidi_ferraresi | portali",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "B | lidi_ferraresi | web_agenzie",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "C | lago_di_como | portali",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "C | lago_di_como | web_agenzie",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "C | lidi_ferraresi | portali",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        },
+        {
+          "nome": "C | lidi_ferraresi | web_agenzie",
+          "esito": "NON RIUSCITA: HTTP Error 429: Too Many Requests",
+          "risultati": 0,
+          "query": []
+        }
+      ],
+      "scartati": {},
+      "duplicati": 0,
+      "verificati": 0,
+      "da_verificare_manualmente": 0,
+      "link_trovati": [],
+      "nuove_opportunita": []
     }
   ],
   "prossimo_id": 25
