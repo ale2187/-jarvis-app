@@ -1635,6 +1635,15 @@
       "da_verificare_manualmente": 0,
       "link_trovati": [],
       "nuove_opportunita": []
+    },
+    {
+      "data": "2026-11-27T18:16+01:00",
+      "progetto": "property-manager",
+      "modalita": "case",
+      "zona": "Como",
+      "link_trovati": [],
+      "nuove_opportunita": [],
+      "testo": "Nessun annuncio verificabile questa settimana."
     }
   ],
   "prossimo_id": 25
